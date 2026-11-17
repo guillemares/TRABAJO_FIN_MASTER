@@ -1,5 +1,6 @@
 DATABASES/MEROPS/meropsweb121/*
 DATABASES/MEROPS/tables/*.csv
+DATABASES/MEROPS/tables/*.parquet
 !DATABASES/MEROPS/tables/catalogo_merops.csv
 DATABASES/MEROPS/meropsweb121.tar.gz
 DATABASES/SCRIPTS/.env
