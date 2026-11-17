@@ -1,0 +1,130 @@
+### TFM
+
+1. Introducción y objetivos
+
+Las bacterias resistentes a antibióticos representan un desafío creciente para la salud pública 
+a nivel mundial, debido a la capacidad de los microorganismos para desarrollar mecanismos que 
+reducen la eficacia de los tratamientos disponibles. Más de 4,7 millones de personas
+fallecieron en 2021 a nivel mundial por causas asociadas a la resistencia bacteriana, y se estima 
+que un 1,27 millones de muertes fueron directamente atribuibles a infecciones resistentes a los antibióticos [1].
+
+La emergencia de la resistencia bacteriana a los antibióticos ha provocado la búsqueda activa de nuevas
+estrategias terapéuticas y la optimización del uso de los antibióticos existentes. Entre estas estrategias,
+se incluyen el desarrollo de bacteriófagos específicos, la combinación de antibióticos con inhibidores de resistencia, 
+inhibidores de _quorum sensing_ o el uso de péptidos antimicrobianos (AMPs), entre otras. [2]
+
+Los AMPs son proteínas pequeñas, con una longitud comprendida entre 10 y 50 aminoácidos,
+que existen de forma natural en todos los organismos vivos y que forman parte del sistema inmunológico innato. [3]
+Por su capacidad para atacar a una amplia variedad de patógenos, incluyendo bacterias, virus y hongos,
+los AMPs son actualmente considerados un campo de investigación prometedor
+para el desarrollo de terapias alternativas. Además, la principal ventaja de los AMPs
+es que podrían escapar a los mecanismos típicos de resistencia bacteriana. Los AMPs 
+suelen actuar sobre múltiples dianas simultáneamente, especialmente sobre la membrana
+celular de los microorganismos, [4] aunque también pueden bloquear factores de virulencia,
+como son las proteasas bacterianas. [5]
+
+Las proteasas bacterianas son enzimas que degradan proteínas y péptidos, que son esenciales
+para la virulencia patogénica [6]. Por ejemplo, _Streptococcus pyogenes_ es un patógeno humano
+que produce una gran variedad de proteasas que contribuyen a la capacidad de infección, virulencia 
+y escape del sistema immune de la bacteria. Entre estas proteasas, destaca SpeB (streptococcal pyrogenic exotoxin B),
+una cisteína proteasa extracelular de aproximadamente 400 aminoácidos que es capaz 
+de degradar proteínas del huésped como la gasdermina-A, componente clave de las células epiteliales,
+dando lugar a piroptosis. [7]
+
+Durante los últimos años, la inteligencia artificial (IA) ha demostrado ser una herramienta
+útil para cualquier campo de investigación. Los modelos climáticos, utilizan una gran
+cantidad de datos recogidos de múltiples estaciones meteorológicas para predecir el tiempo;
+las vibraciones sísmicas pueden ser analizadas para predecir terremotos y ya se pueden
+encontrar coches autónomos que utilizan la IA para conducir de forma segura en entornos urbanos.
+En el campo de la biomedicina, la IA se ha implementado en el diagnóstico de imágenes médicas
+para detectar y clasificar tumores, así como para predecir la respuesta a tratamientos oncológicos,
+entre otros. [8]
+
+Los péptidos con actividad biomédica también se han visto beneficiados del creciente uso de la IA.
+Desde modelos computacional simples de predicción de toxicidad o estabilidad basados en secuencia,
+hasta modelos generativos tridimensionales que permiten diseñar nuevas secuencias
+utilizando aminoácidos no naturales [9,10]. ToxDL es un modelo de _deep learning_ (DL)
+que utiliza una arquitectura simple de red neuronal convolucional (CNN) que clasifica de manera
+binaria los péptidos en tóxicos o no tóxicos [11]; AlphaFold3 es un modelo DL que
+es capaz de predecir con precisión la estructura tridimensional de biomoléculas (proteínas, ácidos nucleicos o glicanos,
+entre otros) a partir de su secuencia, que utiliza un conjunto complejo de _transformers_ y difusión 
+junto con datos tridimensionales y de secuencia. [12]
+
+En este trabajo, se pretende desarrollar un modelo de IA capaz de predecir la actividad inhibidora
+de los AMPs sobre proteasas bacterianas. Mediante el uso de información disponible en 
+bases de datos públicas, se entrenará un modelo capaz de clasificar un péptido como inhibidor
+o no de una proteasa bacteriana, y si este péptido puede ser escindido por la proteasa.
+Para ello, se usarán modelos de análisis de secuencia y de predicción de estructura tridimensional,
+con el objetivo de identificar péptidos con potencial terapéutico frente a infecciones bacterianas resistentes a antibióticos.
+
+
+
+######
+
+2. Metodología
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+########## Bibliografía
+1.
+Naghavi M, Vollset S, Ikuta K et al.
+Global burden of bacterial antimicrobial resistance 1990–2021: a systematic analysis with forecasts to 2050
+The Lancet, 2024; 404, 1199-1226
+
+2.
+Reina J, Reina N. Fagoterapia ¿una alternativa a la antibioticoterapia? 
+[Phage therapy, an alternative to antibiotic therapy?)]. Rev Esp Quimioter. 2018;31(2):101-104.
+
+3.
+Huan, Y., Kong, Q., Mou, H., & Yi, H. (2020). Antimicrobial Peptides: Classification, Design, Application and Research Progress in Multiple Fields. Frontiers in microbiology, 11, 582779. https://doi.org/10.3389/fmicb.2020.582779
+
+4.
+Carnero Canales, C. S., Marquez Cazorla, J. I., Marquez Cazorla, R. M., Sábio, R. M., Santos, H. A., & Pavan, F. R. (2025). Combating Gram-negative infections: The role of antimicrobial peptides and nanotechnology in overcoming antibiotic resistance. Materials today. Bio, 35, 102381. https://doi.org/10.1016/j.mtbio.2025.102381
+
+5.
+Parisi, M. G., Ozón, B., Vera González, S. M., García-Pardo, J., & Obregón, W. D. (2024). Plant Protease Inhibitors as Emerging Antimicrobial Peptide Agents: A Comprehensive Review. Pharmaceutics, 16(5), 582. https://doi.org/10.3390/pharmaceutics16050582
+
+6.
+Culp, E., Wright, G. Bacterial proteases, untapped antimicrobial drug targets. J Antibiot 70, 366–377 (2017). https://doi.org/10.1038/ja.2016.138
+
+7.
+Nelson, D. C., Garbe, J., & Collin, M. (2011). Cysteine proteinase SpeB from Streptococcus pyogenes - a potent modifier of immunologically important host and bacterial proteins. Biological chemistry, 392(12), 1077–1088. https://doi.org/10.1515/BC.2011.208
+
+8.
+Hosny, A., Parmar, C., Quackenbush, J., Schwartz, L. H., & Aerts, H. J. W. L. (2018). Artificial intelligence in radiology. Nature reviews. Cancer, 18(8), 500–510. https://doi.org/10.1038/s41568-018-0016-5
+
+9.
+Ochoa, R., & Cossio, P. (2021). PepFun: Open Source Protocols for Peptide-Related Computational Analysis. Molecules, 26(6), 1664. https://doi.org/10.3390/molecules26061664
+
+10.
+https://arxiv.org/abs/2409.14040
+
+11.
+https://academic.oup.com/bioinformatics/article/36/21/5159/5874440
+
+12.
+Abramson, J., Adler, J., Dunger, J. et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. Nature 630, 493–500 (2024). https://doi.org/10.1038/s41586-024-07487-w
+
+
+

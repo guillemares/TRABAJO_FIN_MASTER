@@ -1,0 +1,367 @@
+Para un TFM de unas 30 páginas, plantearía el trabajo como el diseño y desarrollo de una metodología de inteligencia artificial para predecir si un péptido antimicrobiano puede actuar como inhibidor de una proteasa diana, utilizando MEROPS como fuente principal de información sobre proteasas y sus inhibidores.
+
+La clave es presentar el proyecto como un trabajo de desarrollo metodológico: primero se estudia la información disponible, después se construye un conjunto de datos adecuado y, finalmente, se diseña y evalúa un modelo predictivo.
+
+Hay una distinción científica importante que conviene mantener en todo el TFM: predecir una posible interacción inhibitoria no equivale a demostrar experimentalmente que el péptido inhibe la proteasa. La precisión de la predicción dependerá de los datos disponibles, de cómo se definan los ejemplos positivos y negativos y de la validación del modelo.
+
+# Propuesta de estructura del TFM
+
+1\. Introducción y objetivos
+
+2 páginas
+
+Contexto, problema científico, motivación y objetivos del proyecto.
+
+2\. Fundamentos teóricos y estado del arte
+
+6 páginas
+
+Proteasas, inhibición enzimática, péptidos antimicrobianos, MEROPS e inteligencia artificial aplicada a proteínas.
+
+3\. Materiales y métodos: exploración y preparación de MEROPS
+
+6 páginas
+
+Base de datos, archivos SQL, estructura de tablas, selección de información y diseño del conjunto de datos.
+
+4\. Desarrollo de la metodología de IA
+
+6 páginas
+
+Representación de proteasas y péptidos, etiquetado, selección de variables, modelos y validación.
+
+5\. Resultados y discusión
+
+5 páginas
+
+Resultados de la exploración de datos, rendimiento del modelo, limitaciones e interpretación.
+
+6\. Conclusiones y trabajo futuro
+
+2 páginas
+
+Contribuciones, limitaciones y siguientes pasos.
+
+Extensión propuesta: 27 páginas de contenido, aproximadamente, más 3 páginas para resumen, referencias o elementos preliminares. La distribución puede ajustarse a las normas de tu universidad.
+
+## 1. Introducción y objetivos — 2 páginas
+
+### 1.1. Contexto y motivación
+
+- Importancia de las proteasas en procesos biológicos.
+- Relevancia de los péptidos antimicrobianos como moléculas de interés biomédico.
+- Interés en encontrar nuevos inhibidores de proteasas.
+- Potencial de la inteligencia artificial para priorizar candidatos y reducir el número de experimentos necesarios.
+
+### 1.2. Problema científico
+
+Definir el problema que pretende resolver el TFM: dado un péptido antimicrobiano y una proteasa diana, estimar si existe potencial para que el péptido actúe como inhibidor.
+
+### 1.3. Objetivos
+
+Objetivo general
+
+Desarrollar una metodología computacional basada en inteligencia artificial y en información procedente de MEROPS para estimar el potencial inhibitorio de péptidos antimicrobianos frente a proteasas diana.
+
+Objetivos específicos
+
+1. Explorar la base de datos MEROPS e identificar las tablas y campos relevantes.
+2. Seleccionar y relacionar la información sobre proteasas, secuencias, sustratos e inhibidores.
+3. Diseñar un procedimiento para construir un conjunto de datos de entrenamiento y evaluación.
+4. Definir una representación computacional de la proteasa y del péptido.
+5. Desarrollar y evaluar un modelo predictivo.
+6. Analizar las limitaciones del método y sus posibles aplicaciones futuras.
+
+Si todavía no has implementado el modelo, utiliza verbos como diseñar, proponer o establecer las bases para desarrollar, en lugar de afirmar que ya se ha construido y validado.
+
+## 2. Fundamentos teóricos y estado del arte — 6 páginas
+
+Esta sección es la introducción científica que explica por qué el problema tiene sentido y qué conocimientos necesitas para abordarlo.
+
+### 2.1. Proteasas: función y clasificación — 1 página
+
+Explicar qué son las proteasas o peptidasas: enzimas que catalizan la hidrólisis de enlaces peptídicos.
+
+Puedes introducir:
+
+- Su papel en la degradación y maduración de proteínas.
+- Su participación en procesos fisiológicos y patológicos.
+- Las principales clases catalíticas: serina, cisteína, aspárticas, metalopeptidasas, treonina y otras clases reconocidas.
+- La importancia de conocer la especificidad y las características de la proteasa diana.
+
+No hace falta desarrollar exhaustivamente cada familia. El objetivo es justificar por qué la identidad de la proteasa importa para predecir una posible inhibición.
+
+### 2.2. Inhibición de proteasas — 1 página
+
+Describir qué significa inhibir una proteasa y cómo se diferencia de ser simplemente un sustrato de la enzima.
+
+Aspectos que conviene tratar:
+
+- Unión entre inhibidor y proteasa.
+- Inhibición competitiva, no competitiva y otros mecanismos relevantes.
+- Diferencia entre afinidad de unión, inhibición funcional y degradación del péptido.
+- Parámetros experimentales como \\(K_i\\), \\(IC\_{50}\\) y, cuando corresponda, \\(K_d\\).
+
+Una cuestión importante para tu metodología: que una proteasa pueda reconocer o cortar un péptido no significa que ese péptido sea un inhibidor. Por eso, los datos de sustratos de MEROPS no deben etiquetarse automáticamente como ejemplos negativos de inhibición.
+
+### 2.3. Péptidos antimicrobianos — 1 página
+
+Introducir los péptidos antimicrobianos (AMP, antimicrobial peptides) como moléculas que pueden contribuir a la defensa frente a microorganismos.
+
+Describir brevemente:
+
+- Su longitud y composición de aminoácidos.
+- Su carga neta, hidrofobicidad y estructura.
+- Los mecanismos antimicrobianos conocidos, como la interacción con membranas.
+- La posibilidad de que algunos péptidos presenten otras actividades biológicas.
+
+Es importante matizar que la actividad antimicrobiana no implica por sí sola capacidad inhibitoria frente a una proteasa. Esa posible actividad es precisamente la que tu metodología pretende evaluar.
+
+### 2.4. MEROPS como fuente de información — 1 página
+
+Presentar MEROPS como una base de datos especializada en peptidasas y sus inhibidores.
+
+Explicar qué tipos de información pueden ser relevantes para el proyecto:
+
+- Clasificación de peptidasas en familias y clanes.
+- Secuencias y referencias de proteínas.
+- Información sobre inhibidores.
+- Sustratos y sitios de corte.
+- Relaciones entre proteínas, familias y organismos.
+
+Puedes mencionar la versión utilizada —MEROPS 12.4— y justificar su elección por el tipo de información que ofrece. Más adelante, en metodología, explicarás cómo se descargó y exploró técnicamente.
+
+### 2.5. Inteligencia artificial aplicada a la predicción de interacciones proteína-péptido — 2 páginas
+
+Introducir los enfoques computacionales que pueden servir para resolver el problema:
+
+- Métodos basados en características fisicoquímicas.
+- Modelos clásicos de machine learning, como regresión logística, random forest o SVM.
+- Representaciones de secuencias mediante codificación de aminoácidos, descriptores o embeddings.
+- Modelos de aprendizaje profundo y modelos de lenguaje de proteínas, si resultan pertinentes.
+- Evaluación de clasificadores mediante sensibilidad, especificidad, precisión, F1 y ROC-AUC.
+
+Termina con el vacío metodológico que aborda tu trabajo: desarrollar un procedimiento que integre la información disponible en MEROPS con la secuencia del péptido y las características de la proteasa diana.
+
+## 3. Materiales y métodos: exploración y preparación de MEROPS — 6 páginas
+
+Esta sección debería documentar lo que ya has empezado a hacer. Es importante distinguir entre explorar la base de datos, seleccionar datos útiles y construir el conjunto de datos para IA. Son etapas diferentes.
+
+### 3.1. Entorno computacional
+
+Describe las herramientas utilizadas:
+
+- Python y el entorno de Anaconda.
+- pandas para el tratamiento de datos.
+- MySQL como sistema de gestión de bases de datos relacionales.
+- SQLAlchemy y PyMySQL para conectar Python con MySQL.
+- Visual Studio Code como entorno de desarrollo.
+
+Incluye las versiones concretas si las has registrado. No es necesario explicar qué es cada herramienta en profundidad; basta con indicar su función en el flujo de trabajo.
+
+### 3.2. Descarga y organización de MEROPS 12.4
+
+Explica que obtuviste el paquete comprimido `meropsweb124.tar.gz`, lo descomprimiste y encontraste múltiples archivos `.sql`.
+
+Describe brevemente qué representa cada archivo: un conjunto de sentencias SQL que puede contener instrucciones para crear una tabla e insertar sus datos.
+
+Puedes incluir un pequeño diagrama del flujo:
+
+Descarga de MEROPS 12.4
+
+Paquete comprimido
+
+Descompresión
+
+Colección de archivos SQL
+
+Inspección de los archivos
+
+Identificación de tablas, columnas y tamaños
+
+Selección e importación en MySQL
+
+Solo las tablas necesarias para el análisis
+
+### 3.3. Exploración de la estructura relacional
+
+Aquí puedes explicar el análisis de las sentencias `CREATE TABLE`, que permiten conocer:
+
+- El nombre de cada tabla.
+- Sus columnas.
+- Los tipos de datos.
+- Las claves primarias.
+- Las posibles claves externas y relaciones entre tablas.
+
+Por ejemplo, `activity_status` contiene campos como `code`, `organism` y `status`. Esto permite inferir que almacena información sobre el estado de actividad de ciertas peptidasas en determinados organismos.
+
+Es recomendable incluir una tabla con unas pocas tablas relevantes y su función estimada. No hace falta documentar todos los archivos de MEROPS en el cuerpo principal; el catálogo completo puede ir en un anexo.
+
+### 3.4. Desarrollo de un catálogo automático mediante Python
+
+Este apartado describe el script que hemos planteado para inspeccionar los archivos sin importar su contenido a MySQL.
+
+Explica que el script:
+
+1. Recorre los archivos `.sql` de la carpeta de MEROPS.
+2. Identifica las sentencias `CREATE TABLE`.
+3. Extrae los nombres de las tablas, las columnas y los tipos de datos.
+4. Calcula el tamaño de cada archivo en MB.
+5. Exporta los resultados a un CSV para su revisión.
+
+Este paso es útil para documentar la exploración inicial y priorizar las tablas que merece la pena estudiar. Conviene aclarar que el catálogo identifica la estructura declarada, pero no determina por sí mismo la calidad, relevancia biológica o utilidad predictiva de cada tabla.
+
+### 3.5. Configuración de MySQL y acceso desde Python
+
+Explica la creación de la base de datos local `meropsweb` y la conexión desde Python mediante SQLAlchemy y PyMySQL.
+
+Puedes mostrar el concepto de consulta con `pandas.read_sql()` sin incluir contraseñas ni información sensible.
+
+Describe también la diferencia entre:
+
+- Los archivos SQL disponibles en disco.
+- Las tablas efectivamente importadas a MySQL.
+- Los datos consultados desde Python.
+
+Esta distinción es metodológicamente relevante, porque el hecho de tener un archivo descargado no significa que sus datos ya estén disponibles para el análisis.
+
+### 3.6. Selección preliminar de las tablas relevantes
+
+Este apartado es el puente entre la exploración técnica y la investigación biológica.
+
+Puedes clasificar las tablas según su utilidad potencial:
+
+| Información necesaria                | Tablas o archivos que conviene investigar                        |
+| ------------------------------------ | ---------------------------------------------------------------- |
+| Clasificación de peptidasas          | `classification`, `family`, `clan`, `subfamily`                  |
+| Secuencias proteicas                 | `sequence`, `aligned_sequence`                                   |
+| Información sobre inhibidores        | `peptidase_inhibitor_complex`, `complexes`, `complex_components` |
+| Información sobre sustratos y cortes | `substrate`, `cleavage`, `pathway_cleavage`                      |
+| Organismos y anotaciones             | `organism`, `organism_name`, `GO_annotation`                     |
+
+Esta lista es una selección preliminar por los nombres de las tablas, no una confirmación de que todas contengan datos adecuados para entrenar el modelo. Debes verificar sus esquemas, contenidos, relaciones y documentación antes de decidir cuáles usar.
+
+## 4. Desarrollo de la metodología de IA — 6 páginas
+
+Esta sección explicará cómo pasarás de las tablas de MEROPS a una predicción.
+
+### 4.1. Definición formal del problema
+
+Define la entrada y la salida del sistema:
+
+- Entrada: secuencia del péptido antimicrobiano y proteasa diana identificada por un identificador o por su secuencia.
+- Salida: estimación de la probabilidad de que el péptido presente actividad inhibitoria frente a esa proteasa.
+
+Puedes formularlo como un problema de clasificación binaria si dispones de etiquetas fiables de inhibición y ausencia de inhibición. Si los datos son insuficientes, deberás considerar un enfoque de priorización de candidatos o predicción exploratoria, en vez de afirmar que se puede entrenar un clasificador supervisado robusto.
+
+### 4.2. Construcción y etiquetado del conjunto de datos
+
+Explica cómo identificarás las interacciones conocidas entre proteasas e inhibidores.
+
+Este probablemente será uno de los apartados más importantes del TFM. Debes definir:
+
+- Qué constituye un ejemplo positivo.
+- Qué constituye un ejemplo negativo.
+- Cómo tratar las interacciones de las que no se dispone de información.
+- Cómo eliminar duplicados y gestionar identificadores inconsistentes.
+- Cómo evitar que los datos de evaluación aparezcan indirectamente en el entrenamiento.
+
+No encontrar una interacción en MEROPS no equivale a demostrar que el péptido no inhibe esa proteasa. Los negativos deben definirse cuidadosamente; pueden requerir evidencia experimental de ausencia de inhibición o una estrategia explícita de negativos provisionales.
+
+### 4.3. Representación de las entradas
+
+Describe las variables que podrían caracterizar cada elemento:
+
+- Péptido: secuencia, longitud, composición de aminoácidos, carga estimada, hidrofobicidad y otras características fisicoquímicas.
+- Proteasa: secuencia, familia, clan, clase catalítica y características estructurales disponibles.
+- Par proteasa-péptido: características combinadas que permitan al modelo estimar la compatibilidad entre ambos.
+
+Puedes plantear inicialmente un modelo basado en características sencillas y compararlo con otro que use representaciones de secuencias más avanzadas, si el volumen de datos lo permite.
+
+### 4.4. Modelos candidatos
+
+Propón una estrategia progresiva:
+
+1. Un modelo de referencia sencillo, por ejemplo, regresión logística.
+2. Un modelo basado en árboles, como random forest.
+3. Si hay datos suficientes, una representación basada en embeddings de proteínas o un modelo de aprendizaje profundo.
+
+No es necesario implementar todos los modelos. Es preferible evaluar correctamente dos o tres alternativas que presentar muchos modelos sin una validación rigurosa.
+
+### 4.5. Entrenamiento y validación
+
+Describe cómo separarás los datos de entrenamiento, validación y prueba.
+
+En este problema existe un riesgo particular: si pares muy similares o secuencias relacionadas aparecen a ambos lados de la separación, las métricas pueden sobreestimar la capacidad de generalización. Por eso, considera separar por proteasa, familia o grupos de secuencias relacionadas, según el objetivo del sistema y el volumen de datos disponible.
+
+### 4.6. Métricas de evaluación e interpretación
+
+Presenta las métricas que utilizarás y qué significan:
+
+- Precisión (precision).
+- Sensibilidad (recall).
+- F1.
+- ROC-AUC y, cuando exista un fuerte desequilibrio de clases, PR-AUC.
+- Matriz de confusión.
+
+El objetivo es determinar si el modelo permite priorizar candidatos útiles, no solo obtener una cifra elevada de rendimiento.
+
+## 5. Resultados y discusión — 5 páginas
+
+El contenido final dependerá de hasta dónde llegues durante el desarrollo.
+
+### 5.1. Resultados de la exploración de MEROPS
+
+Puedes presentar:
+
+- Número de archivos SQL inspeccionados.
+- Número de tablas identificadas.
+- Distribución de tamaños de los archivos.
+- Tablas seleccionadas y criterios utilizados.
+- Relaciones relevantes entre las tablas.
+
+### 5.2. Caracterización del conjunto de datos
+
+Si llegas a construirlo, muestra:
+
+- Número de interacciones positivas y negativas.
+- Número de proteasas y péptidos distintos.
+- Distribución por familias de proteasas.
+- Duplicados, datos incompletos y limitaciones de anotación.
+
+### 5.3. Resultados del modelo
+
+Si el modelo se implementa, compara las métricas de los modelos evaluados y analiza sus errores.
+
+Si no consigues disponer de datos suficientes para un entrenamiento fiable, puedes presentar un análisis de viabilidad, el esquema del conjunto de datos y una evaluación de las limitaciones. Es mejor reconocer que no se pudo validar un predictor que presentar como demostrado un modelo que todavía no lo está.
+
+### 5.4. Discusión y limitaciones
+
+Discute la cobertura de MEROPS, el sesgo hacia interacciones conocidas, la disponibilidad de datos negativos, las diferencias entre familias de proteasas y la distancia entre una predicción computacional y una validación experimental.
+
+## 6. Conclusiones y trabajo futuro — 2 páginas
+
+Resume qué se ha conseguido y qué queda pendiente:
+
+- Viabilidad de utilizar MEROPS para construir el conjunto de datos.
+- Tablas e información más útiles.
+- Método propuesto para representar las interacciones.
+- Resultados del modelo, si se ha entrenado y evaluado.
+- Limitaciones principales.
+- Próximos pasos: integrar fuentes adicionales, incorporar información estructural, validar experimentalmente candidatos o mejorar la generalización entre familias.
+
+## Qué escribiría primero en tu caso
+
+Mi recomendación sería empezar por los capítulos 1, 2 y 3, porque permiten documentar el problema biológico y el trabajo de exploración de MEROPS que ya has realizado. Después podrás completar la metodología de IA cuando tengas claro qué datos existen realmente.
+
+Para que el TFM mantenga una línea argumental clara, cada capítulo debería responder a una pregunta:
+
+Introducción y teoría ¿Por qué es relevante predecir la inhibición de proteasas por péptidos antimicrobianos?
+
+Exploración de MEROPS ¿Qué información está disponible y qué parte resulta útil para este problema?
+
+Metodología de IA ¿Cómo se convierte esa información en ejemplos utilizables para un modelo?
+
+Resultados y discusión ¿Hasta qué punto funciona el método y qué limitaciones tiene?
+
+Un último consejo: reserva espacio para explicar la calidad y las limitaciones del conjunto de datos. En un proyecto de IA biomédica, esa parte puede ser tan importante como el algoritmo elegido.
