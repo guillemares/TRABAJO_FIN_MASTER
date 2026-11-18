@@ -1,1 +1,0 @@
-- how to pass from sql to csv:
